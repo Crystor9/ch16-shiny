@@ -1,4 +1,6 @@
 # ui.R
+library(rsconnect)
+deployApp()
 library(shiny)
 library(plotly)
 shinyUI(navbarPage(
@@ -30,7 +32,19 @@ shinyUI(navbarPage(
         plotlyOutput("map")
       )
     )
+  ),
+  tabPanel(
+    "Scatter",
+    titlePanel("Population v.s. Vote Power"),
+    sidebarLayout(
+      sidebarPanel(
+        textInput("find_state", "Find a State", value = "")
+      ),
+      mainPanel(
+        plotlyOutput("Scatter")
+      )
+    )
   )
+))
 
   # Create a tabPanel to show your scatter plot
-))
